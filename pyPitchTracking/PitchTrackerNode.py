@@ -60,9 +60,6 @@ class PitchTrackerNode(ag.Node):
         self.w_f0 = ag.OutWire(self)
         self.w_voiced = ag.OutWire(self)
 
-        self.in_wires.append(self.w_in)
-        self.out_wires.extend([self.w_f0, self.w_voiced])
-
     def clear(self):
         self.pitch_tracker.clear()
 

@@ -32,13 +32,13 @@ class PitchTrackerFramed(PitchTrackerBase):
         voiced : float {0, 1}
             a flag, 1 for pitched signal
         """
-        if(len(x[0]) > self.hop_size):
+        if len(x[0]) > self.hop_size:
             raise ValueError("len(x[0]) > hop_size")
 
         self.framer.write(x)
 
         # since (len(x) < self.hop_size) process at max 1 frame per call (usually less)
-        if(self.framer.available() >= self.frame_size):
+        if self.framer.available() >= self.frame_size:
             self.framer.read(self.tmpBuffer)
             self.framer.advance_read_index(self.hop_size)
 
@@ -149,7 +149,7 @@ class PitchTrackerPYin(PitchTrackerFramed):
 
         super().__init__(frame_size=frame_size, hop_size=hop_size)
 
-        if(not context.context_type == 'prob'):
+        if context.context_type != 'prob':
             raise ValueError("You should use a subclass of PitchTrackerProbContext as context")
 
         self.yin = PyPitchTrackerYin(sample_rate, max_freq=max_freq, min_weight=min_weight)

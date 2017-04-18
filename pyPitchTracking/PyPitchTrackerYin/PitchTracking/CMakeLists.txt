@@ -11,7 +11,6 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/out)
 set(CMAKE_OSX_DEPLOYMENT_TARGET 10.10)
 
 set(test_path "test")
-set(test_path "test")
 set(test_files
     ${test_path}/main.cpp
 )
@@ -49,7 +48,7 @@ add_library(PitchTracking ${src_files} ${include_files})
 
 target_compile_options(PitchTracking PUBLIC ${project_compile_options}) 
 
-# AudioEngine_test
+# test
 # ****************
 add_executable(PitchTracking_test ${test_files})
 
